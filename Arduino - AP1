@@ -1,18 +1,17 @@
-// https://wokwi.com/dashboard/projects
 
 #define VEL_SOM 340
 const int LED_Y = 9;
 const int LED_R = 10;
 const int LED_B = 11;
-const int BUZZER = 12;
+const int BUZZER = 8;
 const int CHAVE_1 = 22;
 const int CHAVE_2 = 23;
 const int CHAVE_3 = 24;
 const int CHAVE_4 = 25;
-const int RGB_RED = 3;
+const int RGB_RED = 31;
 const int RGB_5V = 30;
-const int RGB_BLUE = 4;
-const int RGB_GREEN = 5;
+const int RGB_BLUE = 32;
+const int RGB_GREEN = 33;
 const int BUTTON = 2;
 const int ECHO = 6;
 const int TRIG = 7;
@@ -111,6 +110,7 @@ void definirCorRGB(int r, int g, int b)
   analogWrite(RGB_RED, r);
   analogWrite(RGB_GREEN, g);
   analogWrite(RGB_BLUE, b);
+  delay(1500);
   return;
 }
 
@@ -177,15 +177,15 @@ void inicioModoProgramacaoSerial()
       {
         lerDistancia();
       }
-      else if(input == "RGB_SET_COLOR A RED")
+      else if(input == "RGB_SET_COLOR A BLUE")
       {
         definirCorRGB(0, 255, 255);
       }
-      else if(input == "RGB_SET_COLOR A GREEN")
+      else if(input == "RGB_SET_COLOR A RED")
       {
         definirCorRGB(255, 0, 255);
       }
-      else if(input == "RGB_SET_COLOR A BLUE")
+      else if(input == "RGB_SET_COLOR A GREEN")
       {
         definirCorRGB(255, 255, 0);
       }
@@ -308,3 +308,4 @@ void loop()
   }
 
 }
+
