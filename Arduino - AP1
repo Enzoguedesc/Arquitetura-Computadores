@@ -16,10 +16,10 @@ const int BUTTON = 2;
 const int ECHO = 6;
 const int TRIG = 7;
 const int SELETOR = 27;
-const int LM35 = A0; //entrada analog
+const int LM35 = A0;
 const float BASE_CELSIUS = 0.4887585532746823069403714565;
 
-int converteBinarioDecimal(int a, int b, int c, int d)  //chave 1 = a, chave 2 = b, chave 3 = c, chave 4 = d 
+int converteBinarioDecimal(int a, int b, int c, int d)
 {
   return a * 1 + b * 2 + c * 4 + d * 8;
 }
@@ -80,11 +80,11 @@ void lerTemperatura()
   return;
 }
 
-float disparaTrig(){  // A função diapara um sinal de trigger no pino pinTrig com largura de 10 microssegundos
+float disparaTrig(){
   digitalWrite(TRIG, HIGH);
   delayMicroseconds(10);
   digitalWrite(TRIG, LOW);
-  return pulseIn(ECHO, HIGH);  // determina o tempo em microssegundos
+  return pulseIn(ECHO, HIGH);
 }
 
 void lerDistancia()
@@ -96,7 +96,7 @@ void lerDistancia()
   digitalWrite(TRIG, LOW);
 
   long duracao = pulseIn(ECHO, HIGH);
-  long distancia = duracao * 0.034 / 2; // converte para cm
+  long distancia = duracao * 0.034 / 2;
   Serial.print(F("Distância: "));
   Serial.print(distancia);
   Serial.println(F(" cm"));
@@ -195,13 +195,13 @@ void inicioModoProgramacaoSerial()
       }
       else
       {
-        Serial.println("Comando não reconhecido. Tente novamente!");
+        Serial.println("Mensagem não reconhecida. Tente novamente!");
       }
     }
   }
   else
   {
-    Serial.println("Modo Programação desativado. Tente o comando INICIO_PROG!");
+    Serial.println("Programação desativada. Use o comando INICIO_PROG!");
   }
 
   
@@ -255,19 +255,19 @@ void inicioModoProgramacaoBinario()
       lerDistancia();
       break;
     case 10:
-      definirCorRGB(255, 0, 255); //cor verde
+      definirCorRGB(255, 0, 255);
       break;
     case 11:
-      definirCorRGB(255, 0, 0); //cor ciano
+      definirCorRGB(255, 0, 0);
       break;
     case 12:
-      definirCorRGB(0, 255, 0); //cor magenta
+      definirCorRGB(0, 255, 0);
       break;
     case 13:
-      definirCorRGB(0, 0, 0); //cor branca
+      definirCorRGB(0, 0, 0);
       break;
     case 14:
-      definirCorRGB(255, 255, 255); //desligar o led
+      definirCorRGB(255, 255, 255);
       break;
     case 15:
 
