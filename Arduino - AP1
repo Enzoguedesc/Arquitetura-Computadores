@@ -1,4 +1,3 @@
-
 #define VEL_SOM 340
 const int LED_Y = 9;
 const int LED_R = 10;
@@ -8,14 +7,14 @@ const int CHAVE_1 = 22;
 const int CHAVE_2 = 23;
 const int CHAVE_3 = 24;
 const int CHAVE_4 = 25;
-const int RGB_RED = 31;
 const int RGB_5V = 30;
-const int RGB_BLUE = 32;
-const int RGB_GREEN = 33;
+const int RGB_RED = 31;
+const int RGB_BLUE = 39;
+const int RGB_GREEN = 35;
 const int BUTTON = 2;
 const int ECHO = 6;
 const int TRIG = 7;
-const int SELETOR = 27;
+const int SELETOR = 45;
 const int LM35 = A0;
 const float BASE_CELSIUS = 0.4887585532746823069403714565;
 
@@ -110,7 +109,7 @@ void definirCorRGB(int r, int g, int b)
   analogWrite(RGB_RED, r);
   analogWrite(RGB_GREEN, g);
   analogWrite(RGB_BLUE, b);
-  delay(1500);
+  delay(1000);
   return;
 }
 
@@ -177,17 +176,21 @@ void inicioModoProgramacaoSerial()
       {
         lerDistancia();
       }
-      else if(input == "RGB_SET_COLOR A BLUE")
+      else if(input == "RGB_SET_COLOR A RED")
       {
         definirCorRGB(0, 255, 255);
       }
-      else if(input == "RGB_SET_COLOR A RED")
+      else if(input == "RGB_SET_COLOR A GREEN")
       {
         definirCorRGB(255, 0, 255);
       }
-      else if(input == "RGB_SET_COLOR A GREEN")
+      else if(input == "RGB_SET_COLOR A BLUE")
       {
         definirCorRGB(255, 255, 0);
+      }
+      else if(input == "RGB_SET_COLOR OFF")
+      {
+        definirCorRGB(255, 255, 255);
       }
       else if(input == "FIM_PROG")
       {
@@ -195,13 +198,13 @@ void inicioModoProgramacaoSerial()
       }
       else
       {
-        Serial.println("Mensagem não reconhecida. Tente novamente!");
+        Serial.println("Comando não reconhecido. Tente novamente!");
       }
     }
   }
   else
   {
-    Serial.println("Programação desativada. Use o comando INICIO_PROG!");
+    Serial.println("Modo Programação desativado. Tente o comando INICIO_PROG!");
   }
 
   
@@ -287,8 +290,8 @@ void setup()
   pinMode(CHAVE_3, INPUT);
   pinMode(CHAVE_4, INPUT);
   pinMode(BUTTON, INPUT);
-  pinMode(RGB_RED, OUTPUT);
   pinMode(RGB_5V, OUTPUT);
+  pinMode(RGB_RED, OUTPUT);
   pinMode(RGB_BLUE, OUTPUT);
   pinMode(RGB_GREEN, OUTPUT);
   pinMode(SELETOR, INPUT);
