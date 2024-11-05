@@ -1,1 +1,10 @@
+ldi r27,0x02
+ldi r26, 0x00
 
+ldi r16,0xA
+
+volta: st X,r16
+inc r16
+inc r16
+inc r26
+rjmp volta
