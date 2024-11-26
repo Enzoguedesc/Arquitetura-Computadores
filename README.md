@@ -1,1 +1,1 @@
-# Arquitetura_Comp
+# Arquitetura de Computadores 
