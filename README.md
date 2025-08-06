@@ -1,3 +1,3 @@
 # Curso de Arquitetura de Computadores 
 
-### **Tecnologias:** Arduino, Microship Studio, C++, Assemble
+### **Tecnologias:** Arduino, MicroChip Studio, C++, Assemble
